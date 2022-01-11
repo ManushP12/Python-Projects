@@ -1,0 +1,385 @@
+"""
+This assignment simulates the bingo game
+Assignment 11 Question 1
+Author: Manush Patel
+Student #: 20267599
+Date: November 27th, 2021
+"""
+import urllib.request
+import string
+import random
+
+#Creates global variables
+url = 'https://research.cs.queensu.ca/home/cords2/bingo.txt'
+wordList = []
+ranlist = []
+players = input('Please enter the number of players paying the game (Max. 3): ')
+card = []
+card1 = []
+card2 = []
+
+#Function for reading the url and converting to a dictionary
+def readWebPage(url):
+
+    response = urllib.request.urlopen("https://research.cs.queensu.ca/home/cords2/bingo.txt")
+    html = response.readline()
+
+    while len(html) != 0:
+        data = html.decode('utf-8').split('\n') 
+        html = response.readline()
+        wordList.extend(data)
+
+    #Removes the extra empty strings from the list
+    for x in range(len(wordList)):
+        if '' in wordList:
+            wordList.remove('')
+    print(wordList)
+
+    return wordList
+
+#Main menu function for all the print statements
+def menu():
+
+    print('Welcome to Travel Bingo!')
+    print()
+    
+    #If statements depending on the number of players playing the game
+    if players == '1':
+        name1 = input('Please enter the name of player 1: ')
+        print()
+
+    elif players == '2':
+        name1 = input('Please enter the name of player 1: ')
+        name2 = input('Please enter the name of player 2: ')
+        print()
+
+    elif players == '3':
+        name1 = input('Please enter the name of player 1: ')
+        name2 = input('Please enter the name of player 2: ')
+        name3 = input('Please enter the name of player 3: ')
+        print()
+
+    return players
+
+#Function for making the random cards
+def makecard(wordList, players):
+
+    #Declares global variables
+    global card
+    global card1
+    global card2
+    
+    #Takes 25 random strings from the wordList list and places it in each card
+    for y in range(int(players)): 
+        card = (random.sample(wordList, 25))
+        card1 = (random.sample(wordList, 25))
+        card2 = (random.sample(wordList, 25))
+
+    return card, card1, card2
+
+#Function for formatting the card outputs
+def format1(card, card1, card2, players):
+
+    #If statements depending on the number of players playing
+    if players == '1':
+
+        print('This is the card for player 1: ')
+        print(card[0], '\t', '\t', card[1], '\t', '\t', card[2], '\t', '\t', card[3], '\t', '\t', card[4])
+        print()
+        print(card[5], '\t', '\t', card[6], '\t', '\t', card[7], '\t', '\t', card[8], '\t', '\t', card[9])
+        print()
+        print(card[10], '\t', '\t', card[11], '\t', '\t', card[12], '\t', '\t', card[13], '\t', '\t', card[14])
+        print()
+        print(card[15], '\t', '\t', card[16], '\t', '\t', card[17], '\t', '\t', card[18], '\t', '\t', card[19])
+        print()
+        print(card[20], '\t', '\t', card[21], '\t', '\t', card[22], '\t', '\t', card[23], '\t', '\t', card[24])
+        print()
+        print()
+
+    elif players == '2':
+
+        print('This is the card for player 1: ')
+        print(card[0], '\t', '\t', card[1], '\t', '\t', card[2], '\t', '\t', card[3], '\t', '\t', card[4])
+        print()
+        print(card[5], '\t', '\t', card[6], '\t', '\t', card[7], '\t', '\t', card[8], '\t', '\t', card[9])
+        print()
+        print(card[10], '\t', '\t', card[11], '\t', '\t', card[12], '\t', '\t', card[13], '\t', '\t', card[14])
+        print()
+        print(card[15], '\t', '\t', card[16], '\t', '\t', card[17], '\t', '\t', card[18], '\t', '\t', card[19])
+        print()
+        print(card[20], '\t', '\t', card[21], '\t', '\t', card[22], '\t', '\t', card[23], '\t', '\t', card[24])
+        print()
+        print()
+    
+        print('This is the card for player 2: ')
+        print(card1[0], '\t', '\t', card1[1], '\t', '\t', card1[2], '\t', '\t', card1[3], '\t', '\t', card1[4])
+        print()
+        print(card1[5], '\t', '\t', card1[6], '\t', '\t', card1[7], '\t', '\t', card1[8], '\t', '\t', card1[9])
+        print()
+        print(card1[10], '\t', '\t', card1[11], '\t', '\t', card1[12], '\t', '\t', card1[13], '\t', '\t', card1[14])
+        print()
+        print(card1[15], '\t', '\t', card1[16], '\t', '\t', card1[17], '\t', '\t', card1[18], '\t', '\t', card1[19])
+        print()
+        print(card1[20], '\t', '\t', card1[21], '\t', '\t', card1[22], '\t', '\t', card1[23], '\t', '\t', card1[24])
+        print()
+        print()
+
+    elif players == '3':
+
+        print('This is the card for player 1: ')
+        print(card[0], '\t', '\t', card[1], '\t', '\t', card[2], '\t', '\t', card[3], '\t', '\t', card[4])
+        print()
+        print(card[5], '\t', '\t', card[6], '\t', '\t', card[7], '\t', '\t', card[8], '\t', '\t', card[9])
+        print()
+        print(card[10], '\t', '\t', card[11], '\t', '\t', card[12], '\t', '\t', card[13], '\t', '\t', card[14])
+        print()
+        print(card[15], '\t', '\t', card[16], '\t', '\t', card[17], '\t', '\t', card[18], '\t', '\t', card[19])
+        print()
+        print(card[20], '\t', '\t', card[21], '\t', '\t', card[22], '\t', '\t', card[23], '\t', '\t', card[24])
+        print()
+        print()
+    
+        print('This is the card for player 2: ')
+        print(card1[0], '\t', '\t', card1[1], '\t', '\t', card1[2], '\t', '\t', card1[3], '\t', '\t', card1[4])
+        print()
+        print(card1[5], '\t', '\t', card1[6], '\t', '\t', card1[7], '\t', '\t', card1[8], '\t', '\t', card1[9])
+        print()
+        print(card1[10], '\t', '\t', card1[11], '\t', '\t', card1[12], '\t', '\t', card1[13], '\t', '\t', card1[14])
+        print()
+        print(card1[15], '\t', '\t', card1[16], '\t', '\t', card1[17], '\t', '\t', card1[18], '\t', '\t', card1[19])
+        print()
+        print(card1[20], '\t', '\t', card1[21], '\t', '\t', card1[22], '\t', '\t', card1[23], '\t', '\t', card1[24])
+        print()
+        print()
+
+        print('This is the card for player 3: ')
+        print(card2[0], '\t', '\t', card2[1], '\t', '\t', card2[2], '\t', '\t', card2[3], '\t', '\t', card2[4])
+        print()
+        print(card2[5], '\t', '\t', card2[6], '\t', '\t', card2[7], '\t', '\t', card2[8], '\t', '\t', card2[9])
+        print()
+        print(card2[10], '\t', '\t', card2[11], '\t', '\t', card2[12], '\t', '\t', card2[13], '\t', '\t', card2[14])
+        print()
+        print(card2[15], '\t', '\t', card2[16], '\t', '\t', card2[17], '\t', '\t', card2[18], '\t', '\t', card2[19])
+        print()
+        print(card2[20], '\t', '\t', card2[21], '\t', '\t', card2[22], '\t', '\t', card2[23], '\t', '\t', card2[24])
+        print()
+        print()
+
+#Function to keep asking the user if they want to continue
+def caller(players, wordList, card, card1, card2):
+
+    x = 0
+    y = 53
+
+    #Asking the user how they'd like to set the win condition
+    print('Here is how you can win:')
+    print('1. Win with a full card of found words')
+    print('2. Win with a single line of found words either horizontal or vertical')
+    print('3. Win with all the words in the corners are found')
+    wintype = input('Please enter the number associated with how you would like to win: ')
+
+    #If statement for the number of player
+    if players == '1':
+        #Loop for the number of words in the wordList
+        while x in range(55):
+            choice = input('Enter Y to continue: ')
+            if choice == 'Y':
+                print('The word selected is: ')
+                #Takes random number and then picks a word at that index position
+                word = random.randint(0, y)
+                print(wordList[word])
+                print()
+                for i in range(len(card)):
+                    #If the word in card equals the word printed change it to 'Found'
+                    if card[i] == wordList[word]:
+                        card[i] = "Found"
+                #Print the new card
+                print(card)
+                print()
+                print(format1(card, card1, card2, players))
+                print()
+                #Delete the word from wordList so it doesn't print again
+                del wordList[word]
+                y -= 1
+
+            #Calls the win condition depending on what the user chooses
+            if wintype == '1':  
+                fullwinner(card)
+            elif wintype == '2':
+                rowwinner(card)
+                colwinner(card)
+            elif wintype == '3':
+                corners(card)
+                
+            x += 1
+
+    #If and else statements for the different number of users
+    if players == '2':
+        while x in range(55):
+            choice = input('Enter Y to continue: ')
+            if choice == 'Y':
+                print('The word selected is: ')
+                word = random.randint(0, y)
+                print(wordList[word])
+                print()
+                for i in range(len(card)):
+                    if card[i] == wordList[word]:
+                        card[i] = "Found"
+                print(card)
+                print()
+                for i in range(len(card1)):
+                    if card1[i] == wordList[word]:
+                        card1[i] = "Found"      
+                print(card1)
+                print()
+                print(format1(card, card1, card2, players))
+                print()
+                del wordList[word]
+                y -= 1
+
+            if wintype == '1':
+                fullwinner(card)
+                fullwinner(card1)
+            elif wintype == '2':
+                rowwinner(card)
+                rowwinner(card1)
+                colwinner(card)
+                colwinner(card1)
+            elif wintype == '3':
+                corners(card)
+                corners(card1)
+                
+            x += 1
+
+    #If and else statements for the different number of users
+    if players == '3':
+        while x in range(55):
+            choice = input('Enter Y to continue: ')
+            if choice == 'Y':
+                print('The word selected is: ')
+                word = random.randint(0, y)
+                print(wordList[word])
+                print()
+                for i in range(len(card)):
+                    if card[i] == wordList[word]:
+                        card[i] = "Found"
+                print(card)
+                print()
+                for i in range(len(card1)):
+                    if card1[i] == wordList[word]:
+                        card1[i] = "Found"
+                print(card1)
+                print()
+                for i in range(len(card2)):
+                    if card2[i] == wordList[word]:
+                        card2[i] = "Found"
+                print(card2)
+                print()
+                print(format1(card, card1, card2, players))
+                print()
+                del wordList[word]
+                y -= 1
+
+            if wintype == '1':
+                fullwinner(card)
+                fullwinner(card1)
+                fullwinner(card2)
+            elif wintype == '2':
+                rowwinner(card)
+                rowwinner(card1)
+                rowwinner(card2)
+                colwinner(card)
+                colwinner(card1)
+                colwinner(card2)
+            elif wintype == '3':
+                corners(card)
+                corners(card1)
+                corners(card2)
+                
+            x += 1
+
+    return card, card1, card2
+
+#Function if the whole card has to be found to win
+def fullwinner(card):
+
+    ele = card[0]
+    check = True
+
+    #For loop to go through every string in the card
+    for item in card:
+        if ele != item:
+            check = False
+
+    #If for loop is true print congratulations
+    if check:
+        print("Congratulations you won!")
+    else:
+        pass
+
+#Function for finding the rows with 'Found'
+def rowwinner(card):
+
+    #For loop to go 5 at a time until 25
+    for x in range(0,25,5):
+        winner = True
+        wordList = card[x:x+5]
+
+        #For loop to go through individual index
+        for y in range(5):
+            
+            if wordList[y] != "Found":
+                winner = False
+                
+        #If winner is true print congratulations
+        if winner:
+            print('Congratulations you won!')
+
+#Function to find the winner through columns
+def colwinner(card):
+
+    #For loop to go through individual columns
+    for x in range(0,5):
+        winner = True
+        indices = []
+        #For loop to append indexmade into indices
+        for indexMade in range(x,x+25,5):
+            indices.append(indexMade)
+
+        wordList = [card[index] for index in indices]
+
+        #For loop to go through individual index
+        for y in range(5):
+            if wordList[y] != "Found":
+                winner = False
+
+        #If winner is true print congratulations
+        if winner:
+            print('Congratulations you won!')
+
+            return winner
+        
+    return False
+
+#Function to find the winner through the corners
+def corners(card):
+
+    #If statement for the specific position of the card strings
+    if card[0] == 'Found' and card[4] == 'Found' and card[20] == 'Found' and card[24] == 'Found':
+
+        print('Congratulations you won!')
+        return True
+
+    return False
+
+#Main function that calls all the other functions
+def main():
+
+    readWebPage(url)
+    menu()
+    makecard(wordList, players)
+    format1(card, card1, card2, players)
+    caller(players, wordList, card, card1, card2)
+    winner(card, card1, card2)
+    
+main()
